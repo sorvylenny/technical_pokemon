@@ -1,0 +1,20 @@
+# Dockerfile para construir el backend de Node.js
+FROM node:20
+
+# Configurar el directorio de trabajo para el backend
+WORKDIR /app
+
+# Copiar package.json y package-lock.json para instalar dependencias
+COPY ./backend/package*.json ./
+
+# Instalar dependencias del backend
+RUN npm install --force
+
+# Copiar el código fuente del backend
+COPY ./backend .
+
+# Exponer el puerto 3000 para el backend
+EXPOSE 3000
+
+# Iniciar la aplicación del backend
+CMD ["npm", "start"]

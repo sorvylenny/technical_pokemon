@@ -1,0 +1,27 @@
+/* All styles about breadcumb */
+.breadcumb-section{
+	padding: 70px 0;
+}
+.breadcumb-style1{
+	position: relative;
+	.title{
+		letter-spacing: .02em;
+	}
+	.breadcumb-list{
+		position: relative;
+		a{
+			display: inline-block;
+			@include heading-typo2;
+			position: relative;
+			&:first-child{
+				margin-right: 10px;
+				&:after{
+					content: "/";
+			    font-size: 14px;
+			    position: absolute;
+			    right: -10px;
+				}
+			}
+		}
+	}
+}

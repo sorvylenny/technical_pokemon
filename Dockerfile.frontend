@@ -1,0 +1,38 @@
+# Fase de construcción
+FROM node:20.13.1-alpine3.19 as build
+
+# Establecer el directorio de trabajo
+WORKDIR /app/src
+
+# Copiar los archivos de configuración de dependencias
+COPY ./frontend/package*.json ./
+
+# Instalar las dependencias
+RUN npm install --force
+
+# Copiar el resto del código de la aplicación
+COPY ./frontend .
+
+# Construir la aplicación Angular (SSR)
+RUN npm run build:ssr
+
+# Fase de producción
+FROM node:20.13.1-alpine3.19
+
+# Crear un grupo y usuario para ejecutar la aplicación
+RUN addgroup -S exampleusergroup && adduser -S exampleuser -G exampleusergroup
+
+# Cambiar a ese usuario
+USER exampleuser
+
+# Establecer el directorio de trabajo
+WORKDIR /usr/app
+
+# Copiar los archivos construidos desde la fase de construcción
+COPY --from=build /app/src/dist/pokeplace /usr/app
+
+# Exponer el puerto donde se servirá la aplicación
+EXPOSE 4000
+
+# Comando para ejecutar el servidor (modifica la ruta según sea necesario)
+CMD ["node", "server/server.mjs"]

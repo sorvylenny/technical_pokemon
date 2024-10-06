@@ -1,0 +1,130 @@
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <ng-container *ngIf="!transactionSuccess; else successTemplate">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Pagar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            [disabled]="isProcessing"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card__side card__side_front">
+              <div class="flex__1">
+                <p class="card__side__name-bank d-flex justify-content-center">Banco</p>
+                <div class="card__side__chip"></div>
+                <p class="card__side__number">{{ cardNumber }}</p>
+                <p class="card__side__name-person">{{ cardHolderName }}</p>
+                <p class="card__side__other-numbers card__side__other-numbers_1">{{ expiryDate }}</p>
+              </div>
+            </div>
+            <div class="card__side card__side_back">
+              <div class="card__side__black"></div>
+              <div class="flex__2 mt-5">
+                <p class="card__side__other-numbers card__side__other-numbers_2">{{ cvv }}</p>
+                <div class="card__side__photo"></div>
+                <div class="card__side__debit">debit</div>
+              </div>
+              <p class="card__side__other-info">
+                MONOBANK.UA | 0 800 205 205 | АТ "MONOBANK" НБУ №92 ВІД 20.01.1994 | PCE PC100650 WORLD DEBIT
+              </p>
+            </div>
+          </div>
+          <div class="container p-0">
+            <div *ngIf="!isProcessing; else processingTemplate">
+              <div class="row">
+                <form [formGroup]="paymentForm">
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1 mt-2">Nombre del titular</p>
+                      <input class="form-control mb-3" type="text" placeholder="Name" formControlName="fullName">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">N° de tarjeta</p>
+                      <input class="form-control mb-3" type="text" placeholder="1234 5678 435678"
+                        formControlName="cardNumber" (input)="formatCardNumber($event)">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">Fecha de expiración</p>
+                      <input class="form-control mb-3" type="text" placeholder="MM/YY" formControlName="expiryDate"
+                        (input)="formatExpiryDate($event)">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="d-flex flex-column">
+                      <p class="text mb-1">CVV/CVC</p>
+                      <input class="form-control mb-3 pt-2" type="password" placeholder="***" formControlName="cvv"
+                        maxlength="3">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary mb-3" (click)="makeAPayment()" [disabled]="paymentForm.invalid">
+                      <span class="ps-3">{{ totalPrice | currency:'USD':'symbol':'1.2-2' }}</span>
+                      <span> <img src="/assets/card/arrow-right.svg" alt=""></span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <ng-template #processingTemplate>
+              <div class="d-flex justify-content-center align-items-center flex-column">
+                <p class="text-center">Procesando su pago, por favor espere...</p>
+                <div class="progress w-100">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    [style.width.%]="progressPercentage" [attr.aria-valuenow]="progressPercentage" aria-valuemin="0"
+                    aria-valuemax="100">
+                    {{ progressPercentage }}%
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #successTemplate>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Éxito</h5>
+          <button type="button" (click)="closeDialog()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            [disabled]="isProcessing"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card-success">
+            <div class="header">
+              <div class="image">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="content">
+                <span class="title">¡Pedido confirmado!</span>
+                <p class="message">Gracias por confiar en nosotros. Tu compra ha sido procesada con éxito y pronto
+                  recibirás un correo con la factura y los detalles de tu pedido. Si tienes alguna pregunta, no dudes en
+                  contactarnos.
+                  ¡Esperamos que disfrutes de tu compra!</p>
+              </div>
+              <div class="actions">
+                <button class="history" type="button" (click)="closeDialog()" data-bs-dismiss="modal" aria-label="Close"
+                  [disabled]="isProcessing">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

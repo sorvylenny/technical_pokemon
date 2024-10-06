@@ -1,0 +1,24 @@
+<div class="dashboard_content_wrapper">
+  <div class="dashboard dashboard_wrapper pr0-xl">
+    <div class="dashboard__sidebar d-none d-lg-block">
+      <div class="dashboard_sidebar_list">
+        <p class="fz15 fw400 ds-title"></p>
+
+        <p class="fz15 fw400 ff-heading mt30">Contenidos del Dashboard</p>
+        <div class="sidebar_list_item">
+          <a routerLink="dashboard" class="items-center ds-items" routerLinkActive="-is-active">Inicio</a>
+        </div>
+        <p class="fz15 fw400 ff-heading">MANAGE ACCOUNT</p>
+        <div class="sidebar_list_item">
+          <a class="items-center ds-items" (click)="logOut()" routerLinkActive="-is-active"><i
+              class="flaticon-logout mr15"></i>Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__main pl0-md">
+      <div class="dashboard__content bgc-f7">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

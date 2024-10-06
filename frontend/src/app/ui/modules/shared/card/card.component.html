@@ -1,0 +1,28 @@
+<div [ngClass]="{'card-small': isSmallCard, 'card': !isSmallCard}">
+  <div class="card-image">
+    <img [src]="pokemon.imageUrl" [alt]="pokemon.name">
+  </div>
+  <div class="card-info">
+    <div class="d-flex justify-content-between">
+      <h5 class="me-2">{{ pokemon.name }}</h5>
+      <h5 class="fw-bold mb-0"> {{ pokemon.price.toFixed(2) | currency }}</h5>
+    </div>
+    <p>Tipo: {{ pokemon.type }}</p>
+    <p>Habilidades: {{ pokemon.skill }}</p>
+    @if (isSmallCard) {
+    <div *ngIf="isSmallCard" class="zIndex-small d-flex justify-content-end">
+      <button class="btn btn-warning btn-sm mb-2 " (click)="removeCard(pokemon)">
+        <img src="/assets/card/trash.svg" alt="Eliminar">
+      </button>
+    </div>
+    }
+  </div>
+  @if (!isSmallCard) {
+  <div class="zIndex d-flex justify-content-center">
+    <button class="btn btn-warning button-btn btn-sm mb-2 fw-bold" (click)="buyCard(pokemon)" [disabled]="isInCart"><img
+        src="/assets/card/cart-plus.svg" alt="Carrito">
+      Agregar al carrito</button>
+  </div>
+  }
+
+</div>

@@ -1,0 +1,43 @@
+<div class="col-lg-12">
+  <div class="dashboard_title_area">
+    <h2>Hola, {{fullName}}</h2>
+    <p class="text mb-4">Que bueno verte nuevamente por aquí, están el resumen de las ventas realizadas</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-xxl-3">
+    <div class="d-flex justify-content-between statistics_funfact">
+      <div class="details">
+        <div class="text fz25">Total ventas al dia</div>
+        <div class="title">{{salesByDay?.totalDailySales | currency}}</div>
+      </div>
+      <div class="icon text-center"><img src="/assets/card/cashier-sale.svg" alt=""></div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xxl-3">
+    <div class="d-flex justify-content-between statistics_funfact">
+      <div class="details">
+        <div class="text fz25">Total al mes</div>
+        <div class="title">{{salesMonth?.totalMonthlySales | currency}}</div>
+      </div>
+      <div class="icon text-center"><img src="/assets/card/sales-shop-analytics.svg" alt=""></div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-xl-8">
+    <div class="ps-widget bgc-white default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+      <div class="navtab-style1">
+        <div class="d-sm-flex align-items-center ds-items justify-content-between">
+          <h4 class="title fz17 mb20">Estadísticas de ventas de Pokemones</h4>
+        </div>
+        <div class="tab-content" id="myTabContent2">
+          <div class="tab-pane fade show active" id="hourly" role="tabpanel" aria-labelledby="hourly-tab">
+            <app-chart></app-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

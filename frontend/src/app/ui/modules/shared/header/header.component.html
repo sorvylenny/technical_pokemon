@@ -1,0 +1,15 @@
+<nav class="navbar newn">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <h5 class="fw-bold">PokeApp</h5>
+    </a>
+    <div class="d-flex nav-buttons">
+      <button *ngIf="role" class="btn btn-nav button-btn me-3" (click)="goToDashboard()">Ir al Dashboard</button>
+      @if( !user ){ <button class="btn btn-nav button-btn" (click)="loginToGo()">Iniciar sesión</button>}
+      @else{<button class="btn btn-nav button-btn" (click)="logout()">Cerrar sesión</button>}
+      <button class="ms-3 btn btn-nav button-btn" (click)="checkoutGoTo()"> <img src="/assets/card/cart4.svg" alt="">
+        <span class="badge badge-warning">{{quantity}}</span> {{fullName}}</button>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid rainbow-box p-1"></div>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #FFA500;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .message {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .order {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .items {
+            margin: 20px 0;
+        }
+
+        .item {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #ddd;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            box-shadow: -1.2px 3px 1px 2px  #333;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5px;
+            flex-wrap: wrap;
+        }
+
+        .item-row img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .item-type,
+        .item-skill,
+        .item-price {
+            font-weight: normal;
+            color: #555;
+        }
+
+        .item-price {
+            text-align: right;
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .total {
+            text-align: end;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .item-row {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .item {
+                width: 100%;
+            }
+
+            .item-row img {
+                width: 40px;
+                height: 40px;
+                margin-right: 0;
+            }
+
+            .item-name,
+            .item-type,
+            .item-skill,
+            .item-price {
+                width: 100%;
+                text-align: left;
+                padding: 5px 0;
+            }
+
+            .total {
+                text-align: center;
+                font-size: 1.2em;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">¡Han Realizado Una Compra!</h1>
+        <p class="message">Aquí están los detalles del pedido:</p>
+        <p class="message">Usuario: {{user.fullName}}</p>
+        <p class="message">Email: {{user.email}}</p>
+        <p class="message">Celular: {{user.phone}}</p>
+        <p class="message">Dirección: {{user.address}}</p>
+        <div class="order">Número de pedido: {{orderNumber}}</div>
+        <div class="items">
+            {{#each items}}
+            <div class="item">
+                <div class="item-row">
+                    <img src="{{this.dataValues.sprite}}" alt="{{this.dataValues.name}}">
+                    <div class="item-name">{{this.dataValues.name}}</div>
+                    <div class="item-type">{{this.dataValues.type}}</div>
+                    <div class="item-skill">{{this.dataValues.skill}}</div>
+                    <div class="item-price">${{formatPrice this.dataValues.price}}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="total">Total: ${{total}}</div>
+        <div class="footer"> 
+            <p>Este Email fue enviado a {{storeEmail}}. Por favor, no lo respondas directamente.</p>
+        </div>
+    </div>
+</body>
+
+</html>

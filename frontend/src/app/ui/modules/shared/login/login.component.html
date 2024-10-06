@@ -1,0 +1,106 @@
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Columna de Lottie -->
+    <div class="col-md-6 d-none d-md-block">
+      <div class="text-center">
+        <iframe src="https://lottie.host/embed/a6ad1162-0d71-4ab4-8442-0fbb650fef21/KJ3yEOjlw7.json" frameborder="0"
+          class="lottie"></iframe>
+      </div>
+    </div>
+
+    <!-- Columna de Formulario -->
+    <div class="col-md-6">
+      <div class="signup-container">
+        <div class="signup-card">
+          <div class="signup-body">
+            <div class="log-reg-form">
+              <div class="navtab-style2">
+                <nav>
+                  <div class="nav nav-tabs mb-3">
+                    <button class="nav-link active fw600" data-bs-toggle="tab" data-bs-target="#nav-home" type="button">
+                      Iniciar Sesión
+                    </button>
+                    <button class="nav-link fw600" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button">
+                      Nueva Cuenta
+                    </button>
+                  </div>
+                </nav>
+                <div class="tab-content">
+                  <!-- Tab Content for Iniciar Sesión -->
+                  <div class="tab-pane fade show active fz15" id="nav-home">
+                    <form class="form-style1" [formGroup]="loginForm" (ngSubmit)="login()">
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Correo Electrónico</label>
+                        <input type="email" class="form-control" formControlName="email"
+                          placeholder="Ingrese su correo">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password"
+                          placeholder="Ingrese su contraseña">
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mb-3">
+                        <label class="custom_checkbox fz14 ff-heading">Recuérdame
+                          <input type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                        <a class="fz14 ff-heading" href="#">¿Olvidaste tu contraseña?</a>
+                      </div>
+                      <div class="d-grid mb-3">
+                        <button class="btn btn-warning" type="submit" [disabled]="loginForm.invalid">Iniciar
+                          Sesión</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Tab Content for Nueva Cuenta -->
+                  <div class="tab-pane fade fz15" id="nav-profile">
+                    <form class="form-style1" [formGroup]="registerForm" (ngSubmit)="register()">
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Nombre completo</label>
+                        <input type="text" formControlName="fullName" class="form-control"
+                          placeholder="Ingrese su nombre">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Email</label>
+                        <input type="email" formControlName="email" class="form-control"
+                          placeholder="Ingrese su correo">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Teléfono</label>
+                        <input type="text" formControlName="phone" class="form-control" placeholder="Ej: +571234567890">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Dirección</label>
+                        <input type="text" formControlName="address" class="form-control"
+                          placeholder="Ingresa tu dirección">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label fw600 dark-color">Contraseña</label>
+                        <input type="password" formControlName="password" class="form-control"
+                          placeholder="Ingresa una contraseña">
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mb-3">
+                        <label class="custom_checkbox fz14 ff-heading">Recuérdame
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <a class="fz14 ff-heading" href="#">¿Olvidaste tu contraseña?</a>
+                      </div>
+                      <div class="d-grid mb-3">
+                        <button class="btn btn-warning" type="submit" [disabled]="registerForm.invalid">Crear Cuenta <i
+                            class="fal fa-arrow-right-long"></i>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

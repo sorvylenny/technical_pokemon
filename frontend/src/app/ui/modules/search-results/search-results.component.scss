@@ -1,0 +1,73 @@
+.body-container{
+  background-color:var(--light-color);
+}
+.box-shadow{
+padding-left: 5px;
+padding-right:5px ;
+}
+.form-control-custom {
+  border-radius: 15px 0px 0px 15px  ;
+  border: solid 1px var(--dark-color) ;
+  box-shadow: -1.2px 3px 1px 2px var(--dark-color);
+}
+.form-control-custom:focus {
+  border-color:var(--border-color) !important;
+  outline: none;
+}
+.search-btn{
+  border-radius: 0px 15px 15px 0px  !important;
+  box-shadow: 1.2px 4px 1px 1px var(--dark-color);
+}
+.custom-btn{
+  border-radius: 5px;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  border:none;
+  padding: 1px 15px;
+}
+
+.custom-filter-btn{
+  border-radius: 15px !important                                                                        ;
+  padding: 0.3rem 0.6rem !important;
+}
+
+.button-spacing {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.no-margin {
+  margin-left: 0;
+}
+.form-control {
+  height: auto;
+}
+
+.delete-btn{
+  border-radius: 15px  !important;
+  box-shadow: 1.2px 4px 1px 1px var(--dark-color);
+}
+
+@media(max-width: 1024px) {
+  h1{
+    font-size: 2rem;
+  }
+  .fs-4{
+    font-size: 1.5rem !important;
+  }
+  .delete-btn{
+    font-size: 1rem !important;
+
+  }
+}
+
+@media(max-width: 768px) {
+  h1{
+    font-size: 1.5rem;
+  }
+  .fs-4{
+    font-size: 1rem !important;
+  }
+  .delete-btn{
+    font-size: 0.85rem !important;
+  }
+}

@@ -1,0 +1,12 @@
+<app-search-results (searchTermChange)="onSearch($event)" (clearResults)="clearFilter()"
+  [resultsCount]="searchCount"></app-search-results>
+<ng-container id="body">
+  <div class="container">
+    <div class="card-container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
+      (scrolled)=" onScroll()">
+      <app-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon" [isInCart]="isPokemonInCart(pokemon)"
+        (buyEvent)="goToPokemon($event)"></app-card>
+    </div>
+  </div>
+</ng-container>
+<a class="btn-flotante"><img src="/assets/card/chevron-up.svg" alt="" (click)="scrollToTop()"></a>

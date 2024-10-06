@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row g-5" *ngIf="pokemonRes && pokemonRes.length">
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-primary">Tu carrito</span>
+        <span class="badge bg-primary rounded-pill">{{ pokemonRes.length }}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let poke of pokemonRes">
+          <div>
+            <h6 class="my-0">{{ poke.name | titlecase }}</h6>
+            <small class="text-body-secondary">{{ poke.type | titlecase }}</small>
+          </div>
+          <span class="text-body-secondary">{{ poke.price | currency }}</span>
+        </li>
+      </ul>
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Total:</span>
+        <strong>{{ totalPrice | currency:'USD' }}</strong>
+      </li>
+      <div class="my-4">
+        <button class="w-100 btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#paymentModal"
+          (click)="openPaymentDialog()">Realizar
+          pedido</button>
+        <app-payment (dialogVisibilityChange)="closePaymentDialog($event)" (paymentSuccess)="onSubmit()"
+          [totalPrice]="totalPrice">
+        </app-payment>
+      </div>
+    </div>
+    <div class="col-md-7 col-lg-8">
+      <h4 class="mb-3">Tus Tarjetas</h4>
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="container_card">
+            <app-card *ngFor="let pokemon of pokemonRes , index as i" [pokemon]="pokemon" [isSmallCard]="true"
+              (onRemove)="handleRemove($event, i)"></app-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="noCardsSelected" class="alert alert-warning mt-2">
+    No has seleccionado ninguna tarjeta.
+  </div>
+</div>

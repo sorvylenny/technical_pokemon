@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import "bootstrap/scss/bootstrap-grid.scss";
+@import "./variables.scss";
+@import "./assets/sass/style.scss";
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+:root{
+  --primary-color: #{$primary-color} !important;
+  --secondary-color: #{$secondary-color} !important;
+  --danger-color: #{$danger-color} !important;
+  --warning-color: #{$warning-color} !important;
+  --info-color: #{$info-color} !important;
+  --light-color: #{$light-color} !important;
+  --dark-color: #{$dark-color} !important;
+  --primary-strong-color: #{$primary-strong-color} !important;
+  --lighter-color: #{$lighter-color} !important;
+  --light-opaque-color: #{$light-opaque-color} !important;
+  --lighter-opaque-color: #{$lighter-opaque-color} !important;
+  --light-border-color: #{$light-border-color} !important;
+  --primary-bg-btn: #{$primary-bg-btn} !important;
+  --background-color: #{$background-color} !important;
+  --font-family: 'Roboto', sans-serif !important;
+  --theme-background-color: #{$theme-background-color} !important;
+  --theme-success-color: #{$theme-success-color} !important;
+}
+
+
+body{
+ background-color: var(--theme-background-color) !important;
+}
+.container{
+  max-width: 1024px;
+  margin: 0 auto
+}
+
+.bc-container{
+  max-width: 991px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  background-color: transparent;
+}
+.layout{
+  --background-color: #F4ECFF;
+}
+
+.form-control{
+  border-color: $light-border-color !important;
+  padding: 0.5rem 1rem !important;
+  border: none !important;
+  &:focus{
+    border-color: #BD75C4 !important;
+  }
+}
+
+.btn-bc-primary{
+ background-color: $secondary-color;
+ padding: 0.5rem 1rem;
+ border: none;
+ color:#F4ECFF;
+  &:hover{
+    border-color: $primary-color;
+  }
+}
+p{
+  margin-bottom: 0 !important;
+}
+
+.bc-theme {
+  &-spacer {
+    @include media-breakpoint-up(md) {
+      height: 10vh;
+    }
+  }
+
+  &-checkbox {
+    &.form-check-input {
+      background-color: white;
+      border-color: white;
+      border: solid 2px white;
+      -webkit-box-shadow: 0px 0px 0px 2px $primary-color;
+      -moz-box-shadow: 0px 0px 0px 2px $primary-color;
+      box-shadow: 0px 0px 0px 2px $primary-color;
+
+      &:checked {
+        background-color: $primary-color;
+        background: $primary-strong-color;
+      }
+    }
+  }
+
+  &-background {
+    &-primary {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    &-secondary {
+      background-color: $secondary-color;
+      color: white;
+    }
+
+    &-secondary:active {
+      background-color: $secondary-color !important;
+    }
+
+    &-danger {
+      background-color: $danger-color;
+      color: white;
+    }
+
+    &-warning {
+      background-color: $warning-color;
+      color: white;
+    }
+
+    &-info {
+      background-color: $info-color;
+      color: white;
+    }
+
+    &-light {
+      background-color: $light-color;
+      color: black;
+    }
+
+    &-dark {
+      background-color: $dark-color;
+      color: white;
+    }
+  }
+
+  &-text {
+    &-primary {
+      color: $primary-color !important;
+    }
+
+    &-primary-strong {
+      color: $primary-strong-color;
+    }
+
+    &-secondary {
+      color: $secondary-color !important;
+    }
+
+    &-danger {
+      color: $danger-color !important;
+    }
+
+    &-warning {
+      color: $warning-color !important;
+    }
+
+    &-info {
+      color: $info-color !important;
+    }
+
+    &-light {
+      color: $light-color !important;
+    }
+
+    &-lighter {
+      color: $lighter-color !important;
+    }
+
+    &-light-opaque {
+      color: $light-opaque-color;
+    }
+
+    &-lighter-opaque {
+      color: $lighter-opaque-color;
+    }
+
+    &-dark {
+      color: $dark-color !important;
+    }
+  }
+
+  &-light-border-color {
+    border: solid 1px $light-border-color;
+  }
+
+  &-btn-secondary {
+    background-color: $lighter-opaque-color !important;
+    border-radius: 10px !important                                                                        ;
+    padding: 0.3rem 1rem !important;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--secondary-color) !important;
+
+    &:hover{
+      background-color: var(--primary-color) !important;
+      color: var(--light-color) !important;
+    }
+  }
+
+/* NOTIFICATION */
+  .notification-custom {
+ z-index: 9999;
+  top: -430px;
+  right: 10px;
+}
+
+.alert-danger{
+  border-radius: 0px !important;
+  >p{
+    color: #000000 !important;
+    font-family: "Work Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+  }
+}
+.alert-success{
+  border-color: #000000 !important;
+  background-color: #0451DD !important;
+  border-radius: 0px !important;
+  >p{
+    color: #ffffff !important;
+    font-family: "Work Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+  }
+}
+
+}
+
